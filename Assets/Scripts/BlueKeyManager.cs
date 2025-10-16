@@ -10,7 +10,6 @@ public class BlueKeyManager : MonoBehaviour
     public bool blueHave;
     public float smoothTime;
 
-    public bool blueCheck;
 
     private Vector2 vel;
 
@@ -36,7 +35,6 @@ public class BlueKeyManager : MonoBehaviour
         {
             blueHave = true;
             BlueDoor.GetComponent<BlueDoorScript>().keyPickedUp = true;
-            blueCheck = true;
         }
     }
 }

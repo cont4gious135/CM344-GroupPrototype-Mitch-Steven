@@ -1,25 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class WinStateManager : MonoBehaviour
 {
-    public GameObject levelCompletedUI;
+    public GameObject BlueDoor;
+    public GameObject RedDoor;
+    public GameObject YellowDoor;
+    private SpriteRenderer m_spriteRenderer;
+    private CapsuleCollider2D m_capsuleCollider2D;
     // Start is called before the first frame update
     void Start()
     {
-        redCheck = otherObject.GetComponent<RedKeyManager>().redCheck;
-        blueCheck = otherObject.GetComponent<BlueKeyManager>().blueCheck;
-        yellowCheck = otherObject.GetComponent<YellowKeyManager>().yellowCheck;
-    }
 
+    }
+    
+    void Awake()
+    {
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+    }
     // Update is called once per frame
     void Update()
     {
-        if (redCheck == true && blueCheck == true && yellowCheck == true)
+        if(BlueDoor.GetComponent<BlueDoorScript>().locked == false && RedDoor.GetComponent<RedDoorScript>().locked == false && YellowDoor.GetComponent<YellowDoorScript>().locked == false)
         {
-            if (levelCompletedUI != null)
-                levelCompletedUI.SetActive(true);
+            m_capsuleCollider2D.enabled = true;
+            m_spriteRenderer.enabled = true;
         }
     }
 }
