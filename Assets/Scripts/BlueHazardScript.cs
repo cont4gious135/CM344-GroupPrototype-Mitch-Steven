@@ -15,17 +15,19 @@ public class BlueHazardScript : MonoBehaviour
             Debug.Log("Player hit a hazard!");
             PlayerFail player = other.GetComponent<PlayerFail>();
             
-            if (player != null)
+            // Allows color kills
+            if (keyPickedUp)
+            {
+                Destroy(this.gameObject);
+                print("gone");
+            }
+
+            else if (player != null)
             {
                 player.Fail();
             }
             
         }
-        // Allows color kills
-        if (keyPickedUp)
-            {
-                Destroy(this.gameObject);
-                print("gone");
-            }
+        
     }
 }
