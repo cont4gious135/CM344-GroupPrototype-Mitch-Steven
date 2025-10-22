@@ -13,11 +13,11 @@ public class YellowHazardScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player hit a hazard!");
-            PlayerRespawn player = other.GetComponent<PlayerRespawn>();
+            PlayerFail player = other.GetComponent<PlayerFail>();
             
             if (player != null)
             {
-                //player.Respawn();
+                player.Fail();
             }
             
         }
